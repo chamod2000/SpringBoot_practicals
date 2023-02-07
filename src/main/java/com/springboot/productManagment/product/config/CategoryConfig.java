@@ -1,4 +1,4 @@
-package com.springboot.productManagment.product.category;
+package com.springboot.productManagment.product.config;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
