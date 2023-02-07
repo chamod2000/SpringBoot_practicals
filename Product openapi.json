@@ -1,0 +1,505 @@
+{
+  "openapi": "3.0.1",
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Generated server url"
+    }
+  ],
+  "paths": {
+    "/api/v1/products/{productId}": {
+      "put": {
+        "tags": [
+          "product-controller"
+        ],
+        "summary": "This is to update product data",
+        "operationId": "updateProdcut",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductsDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductsDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "product-controller"
+        ],
+        "summary": "This is to delete existing product form database",
+        "operationId": "delectProduct",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/categories/{id}": {
+      "put": {
+        "tags": [
+          "category-controller"
+        ],
+        "summary": "This is update registered category from database",
+        "operationId": "updateCategory",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoryDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoryDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "category-controller"
+        ],
+        "summary": "This is delete existing category from database",
+        "operationId": "delectCateogry",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/products": {
+      "post": {
+        "tags": [
+          "product-controller"
+        ],
+        "summary": "This is insert new product into the database",
+        "operationId": "addProduct",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductsDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/categories": {
+      "post": {
+        "tags": [
+          "category-controller"
+        ],
+        "summary": "This is insert new category into database",
+        "operationId": "insertNewCategory",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoryDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/products/read/{productId}": {
+      "get": {
+        "tags": [
+          "product-controller"
+        ],
+        "summary": "This is to fetch product data by selected id in database",
+        "operationId": "getProductById",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductsDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/products/read/paginationsort/{offset}/{pageSize}/{field}": {
+      "get": {
+        "tags": [
+          "product-controller"
+        ],
+        "summary": "This is to sort and paginate all data",
+        "operationId": "getProductPaginationAndSort",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "field",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductsDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/products/read/pagination/{offset}/{pageSize}": {
+      "get": {
+        "tags": [
+          "product-controller"
+        ],
+        "summary": "This is to fetch all data by pagination",
+        "operationId": "getProductWithPagination",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductsDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/products/read/all": {
+      "get": {
+        "tags": [
+          "product-controller"
+        ],
+        "summary": "his is to fetch all the products stored in database",
+        "operationId": "getAllProduct",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductsDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/categories/read/{id}": {
+      "get": {
+        "tags": [
+          "category-controller"
+        ],
+        "summary": "This is to fetch data selected id in database",
+        "operationId": "getCategory",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoryDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/categories/read/pagination/{offset}/{pageSize}": {
+      "get": {
+        "tags": [
+          "category-controller"
+        ],
+        "summary": "This is to fetch all data by pagination",
+        "operationId": "getProductWithPagination_1",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CategoryDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/categories/read/all": {
+      "get": {
+        "tags": [
+          "category-controller"
+        ],
+        "summary": "This is to fetch all the categories stored in database",
+        "operationId": "getAllCategory",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CategoryDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ProductsDTO": {
+        "required": [
+          "category_Id",
+          "productName",
+          "productPrice"
+        ],
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "productName": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string"
+          },
+          "productPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "category_Id": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "CategoryDTO": {
+        "required": [
+          "categoryName"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "categoryName": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

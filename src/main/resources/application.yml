@@ -1,0 +1,16 @@
+server:
+  error:
+    include-message: always
+spring:
+  datasource:
+    password: chamodjava.01
+    url: jdbc:mysql://localhost:3307/sprinboot_product_management?useSSL=false
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
